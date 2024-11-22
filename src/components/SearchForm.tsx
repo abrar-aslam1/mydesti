@@ -96,12 +96,14 @@ export function SearchForm() {
                 id="guests"
                 value={formData.guests}
                 onChange={handleChange}
+                placeholder="Number of guests"
+                min="1"
                 className="w-full h-12 pl-10 pr-4 rounded-lg
-                         bg-white/90 backdrop-blur-sm
+                         bg-white
                          text-gray-800 placeholder-gray-500
-                         border border-white/30
-                         focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent
-                         hover:border-white/50
+                         border border-gray-200
+                         focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent
+                         hover:border-gray-300
                          transition-all duration-300"
               />
             </div>
@@ -115,7 +117,6 @@ export function SearchForm() {
                    hover:bg-rose-500 active:bg-rose-700
                    transition-all duration-300 
                    flex items-center justify-center gap-2
-                   border border-white/20 hover:border-white/30
                    shadow-lg hover:shadow-xl"
         >
           <Search className="w-5 h-5" />
