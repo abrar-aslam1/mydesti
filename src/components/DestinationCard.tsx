@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapPin, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Destination } from '../types';
 
 interface DestinationCardProps {
@@ -8,7 +9,10 @@ interface DestinationCardProps {
 
 export function DestinationCard({ destination }: DestinationCardProps) {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-[1.02] transition-transform duration-300 group">
+    <Link 
+      to={`/destinations/${destination.id}`}
+      className="block bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-[1.02] transition-transform duration-300 group"
+    >
       <div className="relative">
         <img 
           src={destination.image} 
@@ -42,13 +46,12 @@ export function DestinationCard({ destination }: DestinationCardProps) {
             </span>
           ))}
         </div>
-        <a 
-          href={`/destinations/${destination.id}`} 
+        <div 
           className="inline-block w-full text-center bg-rose-600 text-white py-2 rounded-md hover:bg-rose-700 transition duration-300 font-medium"
         >
           Learn More
-        </a>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }

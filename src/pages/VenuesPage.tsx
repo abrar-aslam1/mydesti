@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { Header } from '../components/Header';
-import { Footer } from '../components/Footer';
 import { SEO } from '../components/SEO';
 import { VenueCard } from '../components/VenueCard';
 import { venues } from '../data/venues';
@@ -30,12 +28,11 @@ export function VenuesPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <>
       <SEO 
         title="Wedding Venues - DestinationWed"
         description="Discover stunning wedding venues worldwide. Find the perfect location for your dream destination wedding."
       />
-      <Header />
       
       <main className="flex-grow bg-gray-50 py-12">
         <div className="container mx-auto px-4">
@@ -123,8 +120,6 @@ export function VenuesPage() {
           </div>
         </div>
       </main>
-
-      <Footer />
-    </div>
+    </>
   );
 }

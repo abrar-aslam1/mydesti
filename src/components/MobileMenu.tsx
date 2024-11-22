@@ -1,5 +1,6 @@
 import React from 'react';
 import { X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -8,6 +9,10 @@ interface MobileMenuProps {
 
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   if (!isOpen) return null;
+
+  const handleLinkClick = () => {
+    onClose();
+  };
 
   return (
     <div className="fixed inset-0 z-50 bg-gray-800 bg-opacity-50 animate-fade-in">
@@ -21,24 +26,40 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         <nav className="p-4">
           <ul className="space-y-4">
             <li>
-              <a href="/destinations" className="block text-gray-600 hover:text-rose-600 transition">
+              <Link 
+                to="/destinations" 
+                className="block text-gray-600 hover:text-rose-600 transition"
+                onClick={handleLinkClick}
+              >
                 Destinations
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/venues" className="block text-gray-600 hover:text-rose-600 transition">
+              <Link 
+                to="/venues" 
+                className="block text-gray-600 hover:text-rose-600 transition"
+                onClick={handleLinkClick}
+              >
                 Venues
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/planners" className="block text-gray-600 hover:text-rose-600 transition">
+              <Link 
+                to="/planners" 
+                className="block text-gray-600 hover:text-rose-600 transition"
+                onClick={handleLinkClick}
+              >
                 Planners
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/blog" className="block text-gray-600 hover:text-rose-600 transition">
+              <Link 
+                to="/blog" 
+                className="block text-gray-600 hover:text-rose-600 transition"
+                onClick={handleLinkClick}
+              >
                 Blog
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

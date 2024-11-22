@@ -30,5 +30,15 @@ export const destinations: Destination[] = [
     features: ['Villa Weddings', 'Vineyard Ceremonies', 'Historic Castles'],
     venues: 200,
     planners: 60
+  },
+  {
+    id: 'turkey',
+    name: 'Turkey',
+    location: 'Turkey',
+    image: 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=800&q=80',
+    description: 'A magical blend of ancient history and modern luxury with stunning Mediterranean coastline',
+    features: ['Historic Palaces', 'Coastal Ceremonies', 'Luxury Hotels', 'Traditional Venues'],
+    venues: 180,
+    planners: 50
   }
 ];

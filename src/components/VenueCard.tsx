@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapPin, Users, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Venue } from '../types';
 
 interface VenueCardProps {
@@ -8,7 +9,10 @@ interface VenueCardProps {
 
 export function VenueCard({ venue }: VenueCardProps) {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden group hover:shadow-xl transition-shadow duration-300">
+    <Link 
+      to={`/venues/${venue.id}`}
+      className="block bg-white rounded-lg shadow-md overflow-hidden group hover:shadow-xl transition-shadow duration-300"
+    >
       <div className="relative">
         <img 
           src={venue.images[0]} 
@@ -51,13 +55,12 @@ export function VenueCard({ venue }: VenueCardProps) {
             </span>
           )}
         </div>
-        <a 
-          href={`/venues/${venue.id}`}
+        <div 
           className="block w-full text-center bg-rose-600 text-white py-2 rounded-md hover:bg-rose-700 transition duration-300"
         >
           View Details
-        </a>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
