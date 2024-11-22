@@ -1,78 +1,36 @@
-import React, { useState } from 'react';
-import { X, Search as SearchIcon } from 'lucide-react';
-import { destinations } from '../data/destinations';
+import React from 'react';
+import { Search } from 'lucide-react';
 
-interface SearchOverlayProps {
-  isOpen: boolean;
+export interface SearchOverlayProps {
   onClose: () => void;
 }
 
-export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
-  const [searchTerm, setSearchTerm] = useState('');
-  
-  if (!isOpen) return null;
-
-  const filteredDestinations = destinations.filter(destination =>
-    destination.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    destination.location.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
+export function SearchOverlay({ onClose }: SearchOverlayProps) {
   return (
-    <div className="fixed inset-0 z-50 bg-gray-800 bg-opacity-50 animate-fade-in">
-      <div className="fixed inset-x-0 top-0 bg-white shadow-lg animate-fade-in">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex justify-between items-center mb-4">
-            <div className="relative flex-1 max-w-2xl">
-              <SearchIcon className="absolute left-3 top-3 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search destinations..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent"
-                autoFocus
-              />
-            </div>
-            <button
-              onClick={onClose}
-              className="ml-4 text-gray-600 hover:text-rose-600 transition"
-            >
-              <X className="w-6 h-6" />
+    <div className="bg-black/95 w-full h-screen flex items-center justify-center p-4">
+      <div className="w-full max-w-2xl">
+        <div className="relative">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-400" />
+          <input
+            type="text"
+            placeholder="Search destinations, venues, or planners..."
+            className="w-full bg-white/10 text-white placeholder-gray-400 py-4 pl-14 pr-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500"
+            autoFocus
+          />
+        </div>
+        <div className="mt-8">
+          <h3 className="text-white/60 text-sm font-medium mb-4">Popular Searches</h3>
+          <div className="space-y-4">
+            <button className="block w-full text-left text-white hover:text-rose-400 transition-colors">
+              Wedding venues in Turkey
+            </button>
+            <button className="block w-full text-left text-white hover:text-rose-400 transition-colors">
+              Beach wedding destinations
+            </button>
+            <button className="block w-full text-left text-white hover:text-rose-400 transition-colors">
+              Destination wedding planners
             </button>
           </div>
-          
-          {searchTerm && (
-            <div className="max-h-96 overflow-y-auto">
-              {filteredDestinations.length > 0 ? (
-                <ul className="divide-y">
-                  {filteredDestinations.map((destination) => (
-                    <li key={destination.id} className="py-3">
-                      <a
-                        href={`/destinations/${destination.id}`}
-                        className="flex items-center hover:bg-gray-50 p-2 rounded-md transition"
-                      >
-                        <img
-                          src={destination.image}
-                          alt={destination.name}
-                          className="w-16 h-16 object-cover rounded-md"
-                        />
-                        <div className="ml-4">
-                          <h3 className="text-lg font-medium text-gray-800">
-                            {destination.name}, {destination.location}
-                          </h3>
-                          <p className="text-sm text-gray-600">{destination.description}</p>
-                        </div>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="text-center text-gray-600 py-4">
-                  No destinations found matching "{searchTerm}"
-                </p>
-              )}
-            </div>
-          )}
         </div>
       </div>
     </div>

@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { SearchForm } from './components/SearchForm';
 import { DestinationCard } from './components/DestinationCard';
 import { FeatureCard } from './components/FeatureCard';
+import { TurkeyStats } from './components/TurkeyStats';
+import { LocationComparison } from './components/LocationComparison';
+import { Footer } from './components/Footer';
 import { SEO } from './components/SEO';
 import { destinations } from './data/destinations';
 import { Feature } from './types';
@@ -12,18 +15,18 @@ import { generateOrganizationSchema } from './utils/seo';
 const features: Feature[] = [
   { 
     icon: MapPin, 
-    title: 'Handpicked Venues', 
-    description: 'We curate the best wedding venues from around the world.' 
+    title: 'Iconic Venues', 
+    description: 'From historic Ottoman palaces to Mediterranean beach resorts.' 
   },
   { 
     icon: Heart, 
-    title: 'Expert Planners', 
-    description: 'Connect with experienced destination wedding planners.' 
+    title: 'Local Expertise', 
+    description: 'Connect with experienced Turkish wedding planners.' 
   },
   { 
     icon: Calendar, 
-    title: 'Stress-Free Planning', 
-    description: 'We handle the details so you can enjoy your special day.' 
+    title: 'Perfect Timing', 
+    description: 'Enjoy ideal weather from spring through fall.' 
   },
 ];
 
@@ -36,10 +39,10 @@ function App() {
         <div className="absolute inset-0 bg-black/20" />
         <div className="container mx-auto px-4 relative">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-center">
-            Find Your Dream Destination Wedding
+            Your Dream Wedding in Turkey
           </h1>
           <p className="text-xl mb-8 text-center">
-            Discover beautiful venues and expert planners for your special day
+            Discover the perfect blend of ancient history, modern luxury, and Mediterranean beauty
           </p>
           <SearchForm />
         </div>
@@ -48,20 +51,29 @@ function App() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">
-            Popular Destinations
+            Featured Regions
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {destinations.map((destination) => (
-              <DestinationCard key={destination.id} destination={destination} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {destinations[0].regions.map((region) => (
+              <div key={region.name} className="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2 text-gray-800">{region.name}</h3>
+                  <p className="text-gray-600 mb-4">{region.description}</p>
+                  <div className="flex justify-between text-sm text-gray-500">
+                    <span>{region.venueCount} Venues</span>
+                    <span>From ${region.averageCost.toLocaleString()}</span>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-16">
+      <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">
-            Why Choose DestinationWed?
+            Why Choose Turkey?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature) => (
@@ -71,12 +83,30 @@ function App() {
         </div>
       </section>
 
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">
+            Compare Wedding Locations
+          </h2>
+          <LocationComparison />
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">
+            Wedding Statistics & Insights
+          </h2>
+          <TurkeyStats />
+        </div>
+      </section>
+
       <section className="py-16 bg-gradient-to-r from-rose-600 to-pink-500 text-white relative">
         <div className="absolute inset-0 bg-black/20" />
         <div className="container mx-auto px-4 text-center relative">
           <h2 className="text-3xl font-bold mb-8">Ready to Start Planning?</h2>
           <p className="text-xl mb-8">
-            Let us help you create the destination wedding of your dreams.
+            Let us help you create your perfect Turkish wedding experience
           </p>
           <Link 
             to="/contact" 

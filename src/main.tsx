@@ -10,6 +10,7 @@ import { ContactPage } from './pages/ContactPage';
 import { VenuesPage } from './pages/VenuesPage';
 import { PlannersPage } from './pages/PlannersPage';
 import { BlogPage } from './pages/BlogPage';
+import { ComparisonPage } from './pages/ComparisonPage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import './index.css';
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
             element: <VenuePage />,
           }
         ]
+      },
+      {
+        path: 'compare',
+        element: <ComparisonPage />,
       },
       {
         path: 'planners',
