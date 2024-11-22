@@ -1,3 +1,3 @@
-# mydesti
+## mydesti
 
-[Edit in StackBlitz next generation editor ⚡️](https://stackblitz.com/~/github.com/abrar-aslam1/mydesti)
+# A Destination Website to help users find the best destination wedding currated for them.
